@@ -11,8 +11,9 @@ class Config:
     DB_USER = os.getenv('DB_USER', 'root')
     DB_PASSWORD = os.getenv('DB_PASSWORD', 'root@123')
     DB_NAME = os.getenv('DB_NAME', 'inseclabs_db')
-    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+# Change from mysqlconnector to pymysql for better MariaDB compatibility
+SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Cloudflare
     CLOUDFLARE_ACCOUNT_ID = os.getenv('CLOUDFLARE_ACCOUNT_ID')
