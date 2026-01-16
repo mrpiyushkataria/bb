@@ -21,7 +21,8 @@ sudo apt-get install -y \
     git curl wget jq \
     build-essential libssl-dev libffi-dev \
     nmap masscan \
-    redis-server mysql-server \
+    redis-server mariadb-server \
+    mariadb-client \
     chromium chromium-driver
 
 # Install Go if not present
