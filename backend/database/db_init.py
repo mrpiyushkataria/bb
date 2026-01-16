@@ -12,8 +12,8 @@ def init_database():
         with open(schema_path, 'r') as f:
             schema_sql = f.read()
         
-        # Connect to MySQL
-        connection = mysql.connector.connect(
+        # Connect to MariaDB
+        connection = pymysql.connect(
             host=config.DB_HOST,
             user=config.DB_USER,
             password=config.DB_PASSWORD
