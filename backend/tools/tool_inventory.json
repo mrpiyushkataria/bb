@@ -1,0 +1,156 @@
+{
+    "subfinder": {
+        "category": "recon",
+        "description": "Subdomain discovery tool",
+        "install_commands": [
+            "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
+            "sudo cp ~/go/bin/subfinder /usr/local/bin/"
+        ],
+        "check_command": "subfinder -version",
+        "base_command": "subfinder",
+        "usage": "subfinder -d <domain> -o output.txt"
+    },
+    "amass": {
+        "category": "recon",
+        "description": "In-depth Attack Surface Mapping",
+        "install_commands": [
+            "go install -v github.com/owasp-amass/amass/v3/...@master",
+            "sudo cp ~/go/bin/amass /usr/local/bin/"
+        ],
+        "check_command": "amass -version",
+        "base_command": "amass",
+        "usage": "amass enum -d <domain> -o output.txt"
+    },
+    "assetfinder": {
+        "category": "recon",
+        "description": "Find domains and subdomains",
+        "install_commands": [
+            "go install github.com/tomnomnom/assetfinder@latest",
+            "sudo cp ~/go/bin/assetfinder /usr/local/bin/"
+        ],
+        "check_command": "assetfinder -h",
+        "base_command": "assetfinder",
+        "usage": "assetfinder <domain>"
+    },
+    "masscan": {
+        "category": "recon",
+        "description": "TCP port scanner",
+        "install_commands": [
+            "sudo apt-get install -y masscan"
+        ],
+        "check_command": "masscan --version",
+        "base_command": "masscan",
+        "usage": "masscan -p1-65535 <ip> --rate=1000 -oL output.txt"
+    },
+    "nmap": {
+        "category": "recon",
+        "description": "Network mapper",
+        "install_commands": [
+            "sudo apt-get install -y nmap"
+        ],
+        "check_command": "nmap --version",
+        "base_command": "nmap",
+        "usage": "nmap -sV -sC -oN output.txt <target>"
+    },
+    "gowitness": {
+        "category": "recon",
+        "description": "Web screenshot utility",
+        "install_commands": [
+            "go install github.com/sensepost/gowitness@latest",
+            "sudo cp ~/go/bin/gowitness /usr/local/bin/"
+        ],
+        "check_command": "gowitness --version",
+        "base_command": "gowitness",
+        "usage": "gowitness single -u <url>"
+    },
+    "httpx": {
+        "category": "recon",
+        "description": "Fast HTTP toolkit",
+        "install_commands": [
+            "go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest",
+            "sudo cp ~/go/bin/httpx /usr/local/bin/"
+        ],
+        "check_command": "httpx -version",
+        "base_command": "httpx",
+        "usage": "cat subdomains.txt | httpx -silent"
+    },
+    "gobuster": {
+        "category": "recon",
+        "description": "Directory/File, DNS and VHost busting tool",
+        "install_commands": [
+            "go install github.com/OJ/gobuster/v3@latest",
+            "sudo cp ~/go/bin/gobuster /usr/local/bin/"
+        ],
+        "check_command": "gobuster --version",
+        "base_command": "gobuster",
+        "usage": "gobuster dir -u <url> -w wordlist.txt"
+    },
+    "dirsearch": {
+        "category": "recon",
+        "description": "Web path scanner",
+        "install_commands": [
+            "git clone https://github.com/maurosoria/dirsearch.git",
+            "cd dirsearch && pip3 install -r requirements.txt",
+            "sudo ln -sf $(pwd)/dirsearch.py /usr/local/bin/dirsearch"
+        ],
+        "check_command": "dirsearch --help",
+        "base_command": "dirsearch",
+        "usage": "dirsearch -u <url> -e php,html,js"
+    },
+    "nuclei": {
+        "category": "vulnerability",
+        "description": "Fast vulnerability scanner",
+        "install_commands": [
+            "go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest",
+            "sudo cp ~/go/bin/nuclei /usr/local/bin/",
+            "nuclei -update-templates"
+        ],
+        "check_command": "nuclei -version",
+        "base_command": "nuclei",
+        "usage": "nuclei -u <url> -t nuclei-templates/"
+    },
+    "sqlmap": {
+        "category": "exploitation",
+        "description": "Automatic SQL injection tool",
+        "install_commands": [
+            "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev",
+            "sudo ln -sf $(pwd)/sqlmap-dev/sqlmap.py /usr/local/bin/sqlmap"
+        ],
+        "check_command": "sqlmap --version",
+        "base_command": "sqlmap",
+        "usage": "sqlmap -u 'http://site.com/page.php?id=1' --dbs"
+    },
+    "XSStrike": {
+        "category": "exploitation",
+        "description": "Advanced XSS scanner",
+        "install_commands": [
+            "git clone https://github.com/s0md3v/XSStrike.git",
+            "cd XSStrike && pip3 install -r requirements.txt",
+            "sudo ln -sf $(pwd)/xsstrike.py /usr/local/bin/xsstrike"
+        ],
+        "check_command": "xsstrike -h",
+        "base_command": "xsstrike",
+        "usage": "xsstrike -u 'http://site.com/search?q=test'"
+    },
+    "gitleaks": {
+        "category": "misc",
+        "description": "Scan git repos for secrets",
+        "install_commands": [
+            "go install github.com/gitleaks/gitleaks/v8@latest",
+            "sudo cp ~/go/bin/gitleaks /usr/local/bin/"
+        ],
+        "check_command": "gitleaks version",
+        "base_command": "gitleaks",
+        "usage": "gitleaks detect --source <repo_path>"
+    },
+    "wpscan": {
+        "category": "misc",
+        "description": "WordPress security scanner",
+        "install_commands": [
+            "sudo apt-get install -y wpscan"
+        ],
+        "check_command": "wpscan --version",
+        "base_command": "wpscan",
+        "usage": "wpscan --url <wordpress_site> --enumerate vp,vt,tt,u"
+    }
+}
